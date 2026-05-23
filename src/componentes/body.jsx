@@ -1,6 +1,6 @@
 import Card from './Card'
 
-function Body() {
+function Body({ guitarras = [] }) {
   return (
     <main className="container-xl mt-5">
 
@@ -9,26 +9,16 @@ function Body() {
       </h2>
 
       <div className="row mt-5">
-        
-            <Card
-                imagen="/img/guitarra_02.jpg"
-                nombre="Borland"
-            />
-            <Card
-                imagen="/img/guitarra_03.jpg"
-                nombre="Vai"
-            />
-            <Card
-                imagen="/img/guitarra_04.jpg"
-                nombre="Thompson"
-            />
-            <Card
-                imagen="/img/guitarra_05.jpg"
-                nombre="Cobain"
-            />
-       
-        
-        </div>
+        {guitarras.map((guitarra) => (
+          <Card
+            key={guitarra.id}
+            imagen={`/img/${guitarra.image}.jpg`}
+            nombre={guitarra.name}
+            descripcion={guitarra.description}
+            precio={guitarra.price}
+          />
+        ))}
+      </div>
     </main>
   )
 }
